@@ -85,6 +85,15 @@ export default function StepperForm() {
   };
 
   const onSubmit = data => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "student apps", ...this.state })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+
+    e.preventDefault();
     console.log(data);
     if (activeStep === 0) {
       information[1](data);
@@ -111,6 +120,8 @@ export default function StepperForm() {
         name="student apps"
         method="post"
         data-netlify="true"
+        netlify
+        netlify-honeypot="bot-field"
         onSubmit={
           activeStep === 0
             ? informationForm.handleSubmit(onSubmit)
