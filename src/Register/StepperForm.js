@@ -56,6 +56,11 @@ function getSteps() {
   return ["Information", "Address"];
 }
 
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
 export default function StepperForm() {
   const classes = useStyles();
   const { information, account } = useContext(StoreContext);
