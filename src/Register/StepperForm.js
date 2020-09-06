@@ -98,7 +98,6 @@ export default function StepperForm() {
       .then(() => alert("Success!"))
       .catch(error => alert(error));
 
-    e.preventDefault();
     console.log(data);
     if (activeStep === 0) {
       information[1](data);
